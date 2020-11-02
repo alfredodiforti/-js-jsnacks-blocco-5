@@ -1,21 +1,37 @@
 $(document).ready(function(){
-//Partendo da un array di nomi (scelti da voi) creiamo un nuovo array.
-var arraynomi = [ 'luigi', 'andrea','luca','antonio','gabriele'];
 
-var nuovalista = [];
+var primoarray = [
+    { name: 'Tom Ford', type: 'occhiali', color:'black'},
+    { name: 'tommy', type: 't-shirt', color:'blue'},
+    { name: 'puma', type: 'pantaloni', color:'green'},
+    { name: 'nike', type: 'scarpe', color:'red'},
+    { name: 'bucalo', type: 'suite', color:'grey'},
+    { name: 'omega', type: 'watch', color:'allumimium'}, 
+]; 
 
-//Chiedere due numeri all'utente per definire la posizione iniziale e finale dal quale estrarre i valori dall'array originale.
-//Il nuovo array deve contenere gli elementi dell'array originale aventi la posizione (indice array) compresa tra i due numeri inseriti dall'utente.
+var newarray = [];
 
-var min = parseInt(prompt('inserisci l\'indice minimo'));
-var max = parseInt(prompt('inserisci\'indice massimo'));
-
-for (var i = 0; i < arraynomi.length; i++ ) {
-    if (min <= i && i  >= max ) {
-        nuovalista.push(arraynomi[i]);
-    } 
+for (var i = 0; i < primoarray.length; i++) {
+    var oggetto = {name: primoarray[i].name,
+                   type: primoarray[i].type, 
+                   color:primoarray[i].color,
+                   position: generateletters(),
+                }
+                newarray.push(oggetto);
 }
-console.log(nuovalista);
+console.log(newarray);
+
+function generateletters() {
+    var letters = 'qwertyuioplkjhgfdsazxcvbnm';
+    var letter = letters[random(0, letters.length - 1)]
+    return letter;
+}
+
+
+
+function random(min, max) {
+    return Math.floor(Math.random()* (max - min + 1)) + min;
+}
 
 
 
@@ -27,10 +43,4 @@ console.log(nuovalista);
 
 
 
-
-
-
-
-
-
-});
+})
